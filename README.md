@@ -1,8 +1,8 @@
-# Secure XOR File/Folder Encryptor/Decryptor
+# K-Crypt
 
 ## Overview
 
-**Secure XOR Encryptor** is a Python-based desktop application with a graphical user interface (GUI) that allows users to securely encrypt and decrypt files or entire folders using XOR cipher encryption. It combines simplicity with enhanced security by protecting the encryption key using AES-GCM encryption stored in a hidden `.dmrc` file.
+**K-Crypt** is a Python-based desktop application with a graphical user interface (GUI) that allows users to securely encrypt and decrypt files or entire folders using XOR cipher encryption. It combines simplicity with enhanced security by protecting the encryption key using AES-GCM encryption stored in a hidden `.dmrc` file.
 
 Key features include:
 
