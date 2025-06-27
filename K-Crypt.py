@@ -75,7 +75,8 @@ class KeyManager:
 
     @staticmethod
     def load_key(directory: str):
-        path = os.path.join(directory, KEYFILE_NAME)
+        path = directory if os.path.isdir(directory) else os.path.dirname(directory)
+        path = os.path.join(path, KEYFILE_NAME)
         if not os.path.exists(path):
             return None
 
@@ -246,10 +247,11 @@ class SecureXORGUI:
                 self.progress['value'] = i + 1
                 self.master.update_idletasks()
 
-            if self.mode.get() == "encrypt" and not self.file_mode.get():
-                KeyManager(key).save_key(path)
+            if self.mode.get() == "encrypt":
+                key_save_path = os.path.dirname(path) if self.file_mode.get() else path
+                KeyManager(key).save_key(key_save_path)
             elif self.mode.get() == "decrypt":
-                keyfile = os.path.join(path, KEYFILE_NAME)
+                keyfile = os.path.join(path if os.path.isdir(path) else os.path.dirname(path), KEYFILE_NAME)
                 if os.path.exists(keyfile):
                     try:
                         os.remove(keyfile)
